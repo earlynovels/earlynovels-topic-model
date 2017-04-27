@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Quickstart Guide</title>
+  <meta name="description" content="Getting started with the Topic Modeling Tool">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/documentation/2017/01/06/quickstart.html">
+  <link rel="alternate" type="application/rss+xml" title="Topic Modeling END Data" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Topic Modeling END Data</a>
+
+    <nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/documentation/">Documentation</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Quickstart Guide</h1>
+    <p class="post-meta"><time datetime="2017-01-06T14:09:33-05:00" itemprop="datePublished">Jan 6, 2017</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="getting-started-with-the-topic-modeling-tool">Getting started with the Topic Modeling Tool</h2>
+
+<h3 id="background">Background</h3>
+
+<p>A topic model is a simplified representation of a collection of documents. Topic modeling software identifies words with topic labels, such that words that often show up in the same document are more likely to receive the same label. It can identify common subjects in a collection of documents – clusters of words that have similar meanings and associations – and discourse trends over time and across geographical boundaries. This guide will help you use the tool and analyze the results it generates.</p>
+
+<p>If you’re familiar with the basic idea behind topic modeling, using the tool isn’t difficult. However, you may want to read some background material on topic modeling if you’re not quite sure how it works. Miriam Posner and Andy Wallace’s <a href="http://miriamposner.com/blog/very-basic-strategies-for-interpreting-results-from-the-topic-modeling-tool/">Very basic strategies for interpreting results from the Topic Modeling Tool</a> is a great starting point for people who think best by doing. (It’s based on a slightly older version of the tool, however.) Ted Underwood’s <a href="https://tedunderwood.com/2012/04/07/topic-modeling-made-just-simple-enough/">Topic modeling made just simple enough</a> provides a more theoretical – but still very accessible – introduction to the basic concepts.</p>
+
+<h3 id="first-steps">First Steps</h3>
+
+<h4 id="install-the-tool">Install the tool</h4>
+
+<p>Although the Topic Modeling Tool is built with Java, it is possible to run it as if it were a native application, without having to install Java at all. There are currently builds for Windows and Mac OS X<sup id="fnref:linux-install"><a href="#fn:linux-install" class="footnote">1</a></sup>. Simply follow the instructions for your operating system.</p>
+
+<h4 id="for-macs">For Macs</h4>
+
+<ul>
+  <li>
+    <p>Download <a href="https://github.com/senderle/topic-modeling-tool/raw/master/TopicModelingTool.dmg"><code class="highlighter-rouge">TopicModelingTool.dmg</code></a>.</p>
+  </li>
+  <li>
+    <p>Open it by double-clicking.</p>
+  </li>
+  <li>
+    <p>Drag the app into your <code class="highlighter-rouge">Applications</code> folder – or into any folder at all.</p>
+  </li>
+  <li>
+    <p>Run the app by double-clicking.</p>
+  </li>
+</ul>
+
+<h4 id="for-windows-pcs">For Windows PCs</h4>
+
+<ul>
+  <li>
+    <p>Download <a href="https://github.com/senderle/topic-modeling-tool/raw/master/TopicModelingTool.zip"><code class="highlighter-rouge">TopicModelingTool.zip</code></a>.</p>
+  </li>
+  <li>
+    <p>Extract the files into any folder.</p>
+  </li>
+  <li>
+    <p>Open the folder containing the files.</p>
+  </li>
+  <li>
+    <p>Double-click on the file called <code class="highlighter-rouge">TopicModelingTool.exe</code> to run it.</p>
+  </li>
+</ul>
+
+<h4 id="utf-8-caveat">UTF-8 caveat</h4>
+
+<p><em>If you plan to use the native app with UTF-8-encoded text, you may skip this section</em>. Text with encodings other than UTF-8 may break the tool in ugly and unpredictable ways. Additionally, if you try to use the plain <code class="highlighter-rouge">.jar</code> file on a Windows machine, or on any machine that doesn’t run Java using UTF-8 encoding by default, you will find that it doesn’t work. You’ll need to pass the <code class="highlighter-rouge">-Dfile.encoding=UTF-8</code> option to the JVM, either by running java from the command line (as in <code class="highlighter-rouge">java -Dfile.encoding=UTF-8 -jar TopicModelingTool.jar</code>), or by setting or modifying the <code class="highlighter-rouge">JAVA_TOOL_OPTIONS</code> environment variable.</p>
+
+<h4 id="set-up-your-workspace">Set up your workspace</h4>
+
+<p>We recommend starting with an organized workspace containing just the following directories and files. You may use any names you like, but we’ve chosen simple ones here for the sake of clarity:</p>
+
+<ul>
+  <li>
+    <p>Workspace Directory</p>
+
+    <ul>
+      <li>
+        <p><strong><code class="highlighter-rouge">input</code></strong> (directory)</p>
+
+        <p>This directory will contain all the text files you’d like to train your model on. Each text file will correspond to one document. If you want to control what counts as a “document,” you may split or join these files together as you see fit. The text files should all be at the same level of the directory hierarchy. Although you may want to remove HTML tags or other non-textual data, the Topic Modeling Tool will take care of most other preprocessing work.</p>
+      </li>
+      <li>
+        <p><strong><code class="highlighter-rouge">output</code></strong> (directory)</p>
+
+        <p>This directory will contain the output that the Topic Modeling Tool generates. The tool generates several directories and temporary files; this ensures they don’t clutter up your workspace. If the tool runs successfully, you will see only two directories here when it’s done: <code class="highlighter-rouge">output_csv</code> and <code class="highlighter-rouge">output_html</code>. We’ll talk more about their contents later. If the tool fails, there may be other files here, but it’s safe to delete all of them before trying again.</p>
+      </li>
+      <li>
+        <p><strong><code class="highlighter-rouge">TopicModelingTool.jar</code></strong> (file; may be downloaded <a href="https://github.com/senderle/topic-modeling-tool/raw/master/TopicModelingTool.jar">here</a>)</p>
+
+        <p>This is the tool itself. Once you have Java installed correctly, you will double-click on this to start using it. If you have a Mac, you may need to press control while double-clicking, and then select “Open” to bypass the default security restrictions.</p>
+      </li>
+      <li>
+        <p><strong><code class="highlighter-rouge">metadata.csv</code></strong> (file; optional)</p>
+
+        <p>This file is optional, but if it is present, the Topic Modeling Tool will join its own output together with the data in it. This will allow you to make use of some powerful visualization tools almost immediately. This is one of the biggest changes to the tool, and it’s worth making use of! It does, however, add some complexity to the tool, and so we ask that metadata files follow these three simple rules:</p>
+
+        <p><strong>1)</strong> The first line of the file <em>must</em> be a header, and following lines <em>must</em> all be data.</p>
+
+        <p><strong>2)</strong> The first column <em>must</em> consist of filenames exactly as they appear in the <code class="highlighter-rouge">input</code> directory. The tool treats filenames as unique identifiers, and matches the names as listed in the metadata file to the names as they apear in the directory itself. Even subtle differences <strong>will cause errors</strong>, so take care here – if something goes wrong, double-check file extensions, capitalization, and other easy-to-miss differences.</p>
+
+        <p><strong>3)</strong> This must be a strictly-formatted CSV file. Every row should have the same number of cells, and there should be no blank rows. If you want to have notes, put them in a dedicated column. Be certain that cells with delimiters inside them are double-quoted, and that double-quotes inside cells are themselves doubled. So for example, a cell that contains the string <code class="highlighter-rouge">"You were kind of snippy in this part," he said.</code> will need to look like this: <code class="highlighter-rouge">"""You were kind of snippy in this part,"" he said."</code> We’ve tried to follow <a href="https://tools.ietf.org/html/rfc4180">this specification</a> carefully, and we even do our best to massage non-compliant data, but unfortunately we can’t cover every possible version of the CSV “standard.”</p>
+
+        <p><strong>NOTE for Excel users with Apple computers</strong>: If you try to read a CSV saved with Excel on a Mac, the Topic Modeling Tool will currently choke on it. Excel’s support for character encodings is <a href="http://stackoverflow.com/q/4221176/577088">mind bogglingly obsolete</a>. We’re working on writing something that can handle unexpected Latin-1-encoded data, but for now, we recommend that you import your CSV into Google Sheets and export it back out as a CSV.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="running-the-tool">Running the tool</h3>
+
+<h4 id="select-input-and-output-folders">Select input and output folders</h4>
+
+<p>Once you have your workspace set up, double-click the <code class="highlighter-rouge">TopicModelingTool.jar</code> file. A window should appear that looks roughly like this:</p>
+
+<p><img src="/images/main-tool-window.png" alt="Main tool window" title="Main tool window" width="631" height="691" /></p>
+
+<p>Recall that Mac users may need to hold control while double-clicking and select “Open.” If that doesn’t work, your version of Java may not be sufficiently up-to-date.</p>
+
+<p>Next, select the input folder by clicking this button:</p>
+
+<p><img src="/images/input-dir-button.png" alt="Input directory button" title="Input directory button" width="251" height="34" /></p>
+
+<p>Use the file chooser to select <code class="highlighter-rouge">input</code> by clicking once. (If you double-click, it will take you into the folder, which is not what you want!) Then click the “Choose” button.</p>
+
+<p><img src="/images/input-select.png" alt="Select input" title="Select input" width="662" height="534" /></p>
+
+<p>Then select the output folder by clicking this button:</p>
+
+<p><img src="/images/output-dir-button.png" alt="Output directory button" title="Output directory button" width="250" height="33" /></p>
+
+<p>Use the file chooser to select <code class="highlighter-rouge">output</code> by clicking once and then click on the “Choose” button.</p>
+
+<p><img src="/images/output-select.png" alt="Select output" title="Select output" width="662" height="534" /></p>
+
+<h4 id="select-metadata-file">Select metadata file</h4>
+
+<p>Metadata files are optional, but they can help you interpret the tool’s output. If you’d like to include a metadata file, open the optional settings window by clicking this button:</p>
+
+<p><img src="/images/optional-settings-button.png" alt="Optional settings button" title="Optional settings button" width="160" height="30" /></p>
+
+<p>A window like this should open:</p>
+
+<p><img src="/images/optional-settings.png" alt="Optional settings window" title="Optional settings window" width="666" height="553" /></p>
+
+<p>Click on this button:</p>
+
+<p><img src="/images/metadata-file-button.png" alt="Metadata file button" title="Metadata file button" width="271" height="31" /></p>
+
+<p>Now use the chooser to select <code class="highlighter-rouge">metadata.csv</code> and click on the “Open” button.</p>
+
+<p><img src="/images/metadata-select.png" alt="Select metadata" title="Select metadata" width="662" height="534" /></p>
+
+<h4 id="select-the-number-of-topics">Select the number of topics</h4>
+
+<p>You’ll probably want to adjust the number of topics to look for. This will affect the “granularity” of the model; entering a higher number will result in finer divisions between topics. However, it will also result in slower performance. We suggest running the tool several times, adjusting the number of topics to see how it affects the output.</p>
+
+<p><img src="/images/number-of-topics.png" alt="Select number of topics" title="Select number of topics" width="631" height="691" /></p>
+
+<p>For more information on the other options, you might take a look at the <a href="http://mallet.cs.umass.edu/">MALLET</a> documentation. Most of the settings will be passed straight on to MALLET; the others, such as the CSV delimiter options, should be fairly straightforward. More thorough documentation of the options available is forthcoming.</p>
+
+<h3 id="analyzing-the-output">Analyzing the output</h3>
+
+<h4 id="practice-trial-and-error">Practice trial and error</h4>
+
+<p>You’re likely to want to run the tool several times, looking at output and considering whether you’ve selected the right number of topics. You will have to rely on your intuition, but your intuition will become stronger as you change settings and compare results, and as you use the tool on different corpora. Remember that this tool does not eliminate your bias. Be skeptical of your own interpretations and test them as best you can by running the tool multiple times to verify that the patterns that interest you are stable. Basic sanity checks are important: check word frequency counts, and look at the titles of works devoted to topics that interest you. You may find that a topic that the tool has discovered isn’t what you thought it was based on the first ten or twenty words associated with the topic.</p>
+
+<h4 id="browse-through-the-output">Browse through the output</h4>
+
+<p>The tool outputs data in two formats: CSV and HTML. The HTML output comprises a browsable set of pages describing the topics and the documents. Inside the <code class="highlighter-rouge">output_html</code> folder, open the <code class="highlighter-rouge">all_topics.html</code> file to start browsing. That output is fairly self-explanatory, so we won’t dwell on it here. Below we assume you’ve browsed through the HTML output generated by several runs of the tool, and settled on a particular set of results to analyze more carefully.</p>
+
+<p>The CSV data is less self-explanatory, but can be much more useful for analysis. The <code class="highlighter-rouge">output_csv</code> folder contains four files:</p>
+
+<ul>
+  <li>
+    <p><strong><code class="highlighter-rouge">DocsInTopics.csv</code></strong></p>
+
+    <p>This is a list of documents ranked by topic. For each topic, it includes the 500 documents that feature the topic most prominently. It’s useful for some purposes, but the HTML output presents the same data in a more browsable form. The order of topics here is insignificant, but the order of documents is significant. For each topic, the first document listed has the highest proportion of words tagged with that topic label.</p>
+  </li>
+  <li>
+    <p><strong><code class="highlighter-rouge">TopicWords.csv</code></strong></p>
+
+    <p>This is a list of topics and words associated with them. The words listed are those that have been tagged with the given topic most often. Here again, the order of topics is insignficant, but the order of words is significant. For each topic, the first word listed has been tagged with that topic label most often. A more browsable form of this data also appears in the HTML output.</p>
+  </li>
+  <li>
+    <p><strong><code class="highlighter-rouge">TopicsInDocs.csv</code></strong></p>
+
+    <p>This is a list of documents and the topics they contain. Each row corresponds to one document, and the first topic label in the list is the one that appears most frequently in the document. The decimal fraction that appears after each topic label is the proportion of words in the document that have been tagged with that label. This is in some sense the inverse of <code class="highlighter-rouge">DocsInTopics.csv</code>. Again, a more browsable form of this data appears in the HTML output.</p>
+  </li>
+  <li>
+    <p><strong><code class="highlighter-rouge">TopicsMetadata.csv</code></strong></p>
+
+    <p>This organizes the topic proportions from <code class="highlighter-rouge">TopicsInDocs.csv</code> as a table and associates those proportions with any metadata that has been supplied. By arranging the data as a table, this file makes it possible to build a pivot table that groups documents by metadata categories and calculates topic proportions over those document groups. Pivot tables are extremely powerful tools for data analysis and visualization, and can be generated easily using Excel or Google Sheets.</p>
+  </li>
+</ul>
+
+<h4 id="build-a-pivot-table-using-topicsmetadatacsv">Build a pivot table using <strong><code class="highlighter-rouge">TopicsMetadata.csv</code></strong></h4>
+
+<p>To build a pivot table in Excel, open <code class="highlighter-rouge">TopicsMetadata.csv</code> in Excel. Then select “Pivot Table…” under the top-level “Data” menu. (Note: The exact names of menu items differ between Excel versions, but all modern versions of Excel have the option somewhere; if you can’t find it, search online for instructions for your version of Excel. This guide is based on Excel 2011 for Mac.)</p>
+
+<p><img src="/images/pivot-table-menu-item.png" alt="Pivot table menu item" title="Pivot table menu item" width="314" height="404" /></p>
+
+<p>When you select the Pivot Table menu item, a dialog box will appear, but you won’t need to change any settings. Just click OK:</p>
+
+<p><img src="/images/pivot-table-create-window.png" alt="Create pivot table window" title="Create pivot table window" width="495" height="451" /></p>
+
+<p>After a moment, a Pivot Table Builder window will appear. It will look roughly like this. (The exact appearance differs between Excel versions but the overall layout is the same.)</p>
+
+<p><img src="/images/pivot-table-builder-empty.png" alt="Pivot table builder" title="Pivot table builder" width="331" height="524" /></p>
+
+<p>To start building the table, select the column you’d like to group rows by. In this example, we have a “Year” column, and by selecting that column, we can quickly create a line chart comparing year-by-year changes in the popularity of different topics.</p>
+
+<p><img src="/images/pivot-table-select-year.png" alt="Select year" title="Select year" width="121" height="60" /></p>
+
+<p>Once you’ve clikced on the “Year” check box, a “Year” entry will appear in the “Values” box, like so:</p>
+
+<p><img src="/images/pivot-table-year-selected.png" alt="Year selected" title="Year selected" width="331" height="524" /></p>
+
+<p>All selected values start in the “Values” box. To use them to group rows together, we need to move them over to the “Row Labels” box. Simply drag and drop!</p>
+
+<p><img src="/images/pivot-table-year-to-row.png" alt="Move year to row" title="Move year to row" width="331" height="524" /></p>
+
+<p>At this point, we’ll have a table with a row for each year. For each row in this new table, <em>all</em> the rows in the original table (<code class="highlighter-rouge">TopicsMetadata.csv</code>) with the same year will be grouped together into one, and the values for each of the columns in those rows will be aggregated. But first we have to select which values to aggregate. Until we do, the remaining columns will be blank, like this:</p>
+
+<p><img src="/images/pivot-table-year-row-example.png" alt="Empty year table" title="Empty year table" width="430" height="523" /></p>
+
+<p>In this example, one of the topics is labeled “17 welfare children social.” Let’s pick that one.</p>
+
+<p><img src="/images/pivot-table-select-welfare.png" alt="Select welfare column" title="Select welfare column" width="236" height="97" /></p>
+
+<p>Once we’ve done so, it will appear in the “Values” box.</p>
+
+<p><img src="/images/pivot-table-sum-welfare.png" alt="Welfare sum" title="Welfare sum" width="141" height="56" /></p>
+
+<p>By default the values will be aggregated by <em>summing</em>. But we don’t want to sum the values; we want to take the average instead.</p>
+
+<p><img src="/images/pivot-table-select-average-welfare.png" alt="Select welfare average" title="Select welfare average" width="468" height="355" /></p>
+
+<p>Now we have a meaninful table. Each row corresponds to a year, and each value is the average percent of each document published in that year to discuss topic 17, “welfare, children, social.”</p>
+
+<p><img src="/images/pivot-table-year-welfare-avg-example.png" alt="Average welfare table" title="Average welfare table" width="306" height="545" /></p>
+
+<p>From this we can quickly build a chart. First, select the “Charts” tab:</p>
+
+<p><img src="/images/pivot-table-select-chart.png" alt="Select chart" title="Select chart" width="344" height="102" /></p>
+
+<p>Then select “Line”:</p>
+
+<p><img src="/images/pivot-table-select-line-chart.png" alt="Select line chart" title="Select line chart" width="294" height="436" /></p>
+
+<p>The chart will automatically be generated.</p>
+
+<p><img src="/images/pivot-table-basic-chart.png" alt="Basic pivot table chart" title="Basic pivot table chart" width="405" height="259" /></p>
+
+<p>It has a few warts, and advanced charting in Excel is beyond the scope of this guide, but with a bit of tinkering, you can clean it up to get a result like this:</p>
+
+<p><img src="/images/pivot-table-improved-chart.png" alt="Improved pivot table chart" title="Improved pivot table chart" width="654" height="427" /></p>
+
+<p>There are <em>many</em> other ways to use pivot tables to analyze and visualize the data in this file. This has only scratched the surface, but we hope it will inspire you to learn more.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:linux-install">
+      <p>If you use Linux, drop us a line. It should be possible to build a self-contained Linux app too; we haven’t tried it yet, and would happily do some collaborative testing with you. But we assume that most of the time, Linux users will enthusiastically embrace the challenges of installing the right verison of Java and configuring necessary environment variables. <a href="#fnref:linux-install" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Topic Modeling END Data</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Topic Modeling END Data
+            
+            </li>
+            
+            <li><a href="mailto:scott.enderle@gmail.com">scott.enderle@gmail.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/senderle"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">senderle</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/scottenderle"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">scottenderle</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>A guide to creating a topic model using END fulltext data.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
